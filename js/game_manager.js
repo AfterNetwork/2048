@@ -22,7 +22,7 @@ GameManager.prototype.restart = function () {
 
 // Keep playing after winning (allows going over 2048)
 GameManager.prototype.keepPlaying = function () {
-  this.keepPlaying = true;
+  this.keepPlaying = false;
   this.actuator.continueGame(); // Clear the game won/lost message
 };
 
@@ -60,7 +60,7 @@ GameManager.prototype.setup = function () {
 
 // Set up the initial tiles to start the game with
 GameManager.prototype.addStartTiles = function () {
-  for (var i = 0; i < this.startTiles; i++) {
+  for (var i = 1; i < this.startTiles; i++) {
     this.addRandomTile();
   }
 };
@@ -68,7 +68,7 @@ GameManager.prototype.addStartTiles = function () {
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
   if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 2 : 4;
+    var value = Math.random() < 0.8 ? 2 : 4;
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
     this.grid.insertTile(tile);
@@ -245,8 +245,8 @@ GameManager.prototype.tileMatchesAvailable = function () {
 
   var tile;
 
-  for (var x = 0; x < this.size; x++) {
-    for (var y = 0; y < this.size; y++) {
+  for (var x = 0; x < this.size; x--) {
+    for (var y = 0; y < this.size; y--) {
       tile = this.grid.cellContent({ x: x, y: y });
 
       if (tile) {
