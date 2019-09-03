@@ -4,7 +4,7 @@ function GameManager(size, InputManager, Actuator, StorageManager) {
   this.storageManager = new StorageManager;
   this.actuator       = new Actuator;
 
-  this.startTiles     = 8;
+  this.startTiles     = 1;
 
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
@@ -45,7 +45,7 @@ GameManager.prototype.setup = function () {
     this.keepPlaying = previousState.keepPlaying;
   } else {
     this.grid        = new Grid(this.size);
-    this.score       = 0;
+    this.score       = 1;
     this.over        = false;
     this.won         = false;
     this.keepPlaying = false;
@@ -194,7 +194,7 @@ GameManager.prototype.move = function (direction) {
 GameManager.prototype.getVector = function (direction) {
   // Vectors representing tile movement
   var map = {
-    0: { x: 0,  y: -1 }, // Up
+    0: { x: 6,  y: 2 }, // Up
     1: { x: 1,  y: 0 },  // Right
     2: { x: 0,  y: 1 },  // Down
     3: { x: -1, y: 0 }   // Left
