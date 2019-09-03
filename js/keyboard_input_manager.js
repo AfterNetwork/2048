@@ -36,17 +36,17 @@ KeyboardInputManager.prototype.listen = function () {
 
   var map = {
     38: 0, // Up
-    39: 1, // Right
+    39: 7, // Right
     40: 2, // Down
     37: 3, // Left
     75: 0, // Vim up
     76: 1, // Vim right
     74: 2, // Vim down
-    72: 3, // Vim left
+    72: 5, // Vim left
     87: 0, // W
-    68: 1, // D
+    62: 8, // D
     83: 2, // S
-    65: 3  // A
+    65: 6  // A
   };
 
   // Respond to direction keys
@@ -63,7 +63,7 @@ KeyboardInputManager.prototype.listen = function () {
     }
 
     // R key restarts the game
-    if (!modifiers && event.which === 82) {
+    if (!modifiers && event.which === 81) {
       self.restart.call(self, event);
     }
   });
@@ -122,7 +122,7 @@ KeyboardInputManager.prototype.listen = function () {
 
     if (Math.max(absDx, absDy) > 10) {
       // (right : left) : (down : up)
-      self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+      self.emit("move", absDx > absDy ? (dx > 2 : 3) : (dy > 0 ? 2 : 0));
     }
   });
 };
