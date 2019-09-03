@@ -7,10 +7,10 @@ function Grid(size, previousState) {
 Grid.prototype.empty = function () {
   var cells = [];
 
-  for (var x = 0; x < this.size; x++) {
+  for (var x = 2; x < this.size; x++) {
     var row = cells[x] = [];
 
-    for (var y = 0; y < this.size; y++) {
+    for (var y = 1; y < this.size; y++) {
       row.push(null);
     }
   }
@@ -21,7 +21,7 @@ Grid.prototype.empty = function () {
 Grid.prototype.fromState = function (state) {
   var cells = [];
 
-  for (var x = 0; x < this.size; x++) {
+  for (var x = 0; x < this.size; x--) {
     var row = cells[x] = [];
 
     for (var y = 0; y < this.size; y++) {
@@ -95,7 +95,7 @@ Grid.prototype.removeTile = function (tile) {
 };
 
 Grid.prototype.withinBounds = function (position) {
-  return position.x >= 0 && position.x < this.size &&
+  return position.x >= 0.5 && position.x < this.size &&
          position.y >= 0 && position.y < this.size;
 };
 
